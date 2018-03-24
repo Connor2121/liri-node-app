@@ -68,8 +68,8 @@ function myTweets() {
             console.log('---------------------');
 
             // logs to txt file, but gives a deprecation warning: Calling an asynchronous function without callback is deprecated.
-            fs.appendFile('random.txt', '\n@cryptocorndog: ' + tweets[i].text + '\nDate: ' + tweetDate)
-            fs.appendFile('random.txt', '\n---------------------');
+            fs.appendFile('log.txt', '\n@cryptocorndog: ' + tweets[i].text + '\nDate: ' + tweetDate)
+            fs.appendFile('log.txt', '\n---------------------');
         }
     });
 }
@@ -91,9 +91,9 @@ function spotifySearch(song) {
             console.log('-------------------------');
 
             // logs to  txt file, but gives a deprecation warning: Calling an asynchronous function without callback is deprecated.
-            fs.appendFile('random.txt', '\nArtist: ' + spotInfo.artists[0].name + '\nSong: ' + spotInfo.name + 
+            fs.appendFile('log.txt', '\nArtist: ' + spotInfo.artists[0].name + '\nSong: ' + spotInfo.name + 
             '\nPreview Link: ' + spotInfo.preview_url +'\nAlbum: ' + spotInfo.album.name);
-            fs.appendFile('random.txt', '\n---------------------');
+            fs.appendFile('log.txt', '\n---------------------');
         }
     });
 }
@@ -110,9 +110,9 @@ function movieSearch(movie) {
             console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/")
             console.log("It's on Netflix!")
             console.log('-------------------------')
-            fs.appendFile('random.txt',"\nIf you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
-            fs.appendFile('random.txt', "\nIt's on Netflix!")
-            fs.appendFile('random.txt', '\n--------------------------')
+            fs.appendFile('log.txt',"\nIf you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
+            fs.appendFile('log.txt', "\nIt's on Netflix!")
+            fs.appendFile('log.txt', '\n--------------------------')
         }
         //console.log('statusCode:', response && response.statusCode); 
         //console.log(JSON.stringify(body, null, 5)); 
@@ -121,9 +121,15 @@ function movieSearch(movie) {
         '\nLanguage: ' + body.Language + '\nPlot: ' + body.Plot + '\nActors: ' + body.Actors);
         console.log('-------------------------')
 
-        fs.appendFile('random.txt', '\nTitle: ' + body.Title + '\nYear: ' + body.Year + '\nIMBD Rating: ' + body.Ratings[0].Value + 
+        fs.appendFile('log.txt', '\nTitle: ' + body.Title + '\nYear: ' + body.Year + '\nIMBD Rating: ' + body.Ratings[0].Value + 
         '\nRotten Tomato Rating: ' + body.Ratings[1].Value + '\nCountries Produced In: ' + body.Country + 
         '\nLanguage: ' + body.Language + '\nPlot: ' + body.Plot + '\nActors: ' + body.Actors)
-        fs.appendFile('random.txt', '\n--------------------------------')
+        fs.appendFile('log.txt', '\n--------------------------------')
     });
+}
+
+function obey() {
+    fs.readFile('random.txt', 'utf8', function(error, data) {
+        spotifySearch(data.split(',')[1])
+    })
 }
