@@ -15,6 +15,8 @@ var liriCommand = process.argv[2];
 
 var choice = '';
 
+// deals with multiple word searches for movie or song
+
 for(var i = 3; i < process.argv.length; i++) {
     if(i > 3 || i < process.argv.length) {
         choice = choice + '+' + process.argv[i];
@@ -23,7 +25,7 @@ for(var i = 3; i < process.argv.length; i++) {
         choice = process.argv[3];
     }
 }
-
+// four different liri commands and related functions
 switch (liriCommand) {
 case 'my-tweets':
     myTweets();
@@ -34,7 +36,7 @@ case `spotify-this-song`:
         spotifySearch(choice);
     }
     else{
-        spotifySearch('')
+        spotifySearch('Breakthrough')
     }
     
     break;
@@ -52,22 +54,22 @@ function myTweets() {
 
     var params = {screen_name: 'cryptocorndog'};
         client.get('statuses/user_timeline', params, function(error, tweets, response) {
-        if (!error) {
-            for(var i = 0; i < tweets.length; i++) {
-                var tweetDate = tweets[i].created_at;
-
-                console.log('@cryptocorndog: ' + tweets[i].text + 'Date: ' + tweetDate);
-                console.log('---------------------');
-
-                fs.appendFile('random.txt', '@cryptocorndog: ' + tweets[i].text + 'Date: ' + tweetDate)
-                fs.appendFile('random.txt', '---------------------');
-            }
+        if (error) {
+           return console.log('Error!')
         }
-        else{
-            console.log('Error!')
+        for(var i = 0; i < tweets.length; i++) {
+            var tweetDate = tweets[i].created_at;
+
+            console.log('@cryptocorndog: ' + tweets[i].text + 'Date: ' + tweetDate);
+            console.log('---------------------');
+
+            fs.appendFile('random.txt', '@cryptocorndog: ' + tweets[i].text + 'Date: ' + tweetDate)
+            fs.appendFile('random.txt', '---------------------');
         }
     });
 }
+    
+
 
 function spotifySearch(song) {
 
@@ -75,6 +77,6 @@ function spotifySearch(song) {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
-       console.log(data); 
+       console.log(JSON.stringify(data, null, 2)); 
       });
 }
