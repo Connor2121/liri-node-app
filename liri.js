@@ -60,11 +60,12 @@ function myTweets() {
         for(var i = 0; i < tweets.length; i++) {
             var tweetDate = tweets[i].created_at;
 
-            console.log('@cryptocorndog: ' + tweets[i].text + 'Date: ' + tweetDate);
+            console.log('@cryptocorndog: ' + tweets[i].text + '\nDate: ' + tweetDate);
             console.log('---------------------');
 
-            fs.appendFile('random.txt', '@cryptocorndog: ' + tweets[i].text + 'Date: ' + tweetDate)
-            fs.appendFile('random.txt', '---------------------');
+            // logs to txt file, but gives a deprecation warning: Calling an asynchronous function without callback is deprecated.
+            fs.appendFile('random.txt', '\n@cryptocorndog: ' + tweets[i].text + '\nDate: ' + tweetDate)
+            fs.appendFile('random.txt', '\n---------------------');
         }
     });
 }
@@ -77,6 +78,18 @@ function spotifySearch(song) {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
-       console.log(JSON.stringify(data, null, 2)); 
-      });
+        for(var i = 0; i < data.tracks.items.length; i++) {
+
+            var spotInfo = data.tracks.items[i];
+           
+            console.log('Artist: ' + spotInfo.artists[0].name + '\nSong: ' + spotInfo.name + 
+            '\nPreview Link: ' + spotInfo.preview_url +'\nAlbum: ' + spotInfo.album.name); 
+            console.log('-------------------------');
+
+            // logs to  txt file, but gives a deprecation warning: Calling an asynchronous function without callback is deprecated.
+            fs.appendFile('random.txt', '\nArtist: ' + spotInfo.artists[0].name + '\nSong: ' + spotInfo.name + 
+            '\nPreview Link: ' + spotInfo.preview_url +'\nAlbum: ' + spotInfo.album.name);
+            fs.appendFile('random.txt', '\n---------------------');
+        }
+    });
 }
