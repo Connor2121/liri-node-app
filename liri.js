@@ -38,11 +38,15 @@ case `spotify-this-song`:
     else{
         spotifySearch('Breakthrough')
     }
-    
     break;
 
 case 'movie-this':
-    movie();
+    if(choice) {
+        movieSearch(choice);
+    }
+    else {
+        movieSearch('Mr. Nobody')
+    }
     break;
 
 case 'do-what-it-says':
@@ -91,5 +95,35 @@ function spotifySearch(song) {
             '\nPreview Link: ' + spotInfo.preview_url +'\nAlbum: ' + spotInfo.album.name);
             fs.appendFile('random.txt', '\n---------------------');
         }
+    });
+}
+
+function movieSearch(movie) {
+
+    request('http://www.omdbapi.com/?apikey=trilogy&t=' + movie  , function (error, response, body) {
+
+        body = JSON.parse(body);
+        if(error) {
+           return console.log('error:', error);
+        }
+        if(movie === 'Mr. Nobody') {
+            console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/")
+            console.log("It's on Netflix!")
+            console.log('-------------------------')
+            fs.appendFile('random.txt',"\nIf you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
+            fs.appendFile('random.txt', "\nIt's on Netflix!")
+            fs.appendFile('random.txt', '\n--------------------------')
+        }
+        //console.log('statusCode:', response && response.statusCode); 
+        //console.log(JSON.stringify(body, null, 5)); 
+        console.log('Title: ' + body.Title + '\nYear: ' + body.Year + '\nIMBD Rating: ' + body.Ratings[0].Value + 
+        '\nRotten Tomato Rating: ' + body.Ratings[1].Value + '\nCountries Produced In: ' + body.Country + 
+        '\nLanguage: ' + body.Language + '\nPlot: ' + body.Plot + '\nActors: ' + body.Actors);
+        console.log('-------------------------')
+
+        fs.appendFile('random.txt', '\nTitle: ' + body.Title + '\nYear: ' + body.Year + '\nIMBD Rating: ' + body.Ratings[0].Value + 
+        '\nRotten Tomato Rating: ' + body.Ratings[1].Value + '\nCountries Produced In: ' + body.Country + 
+        '\nLanguage: ' + body.Language + '\nPlot: ' + body.Plot + '\nActors: ' + body.Actors)
+        fs.appendFile('random.txt', '\n--------------------------------')
     });
 }
