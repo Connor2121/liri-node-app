@@ -18,10 +18,10 @@ Run the command 'node liri.js' + one of the four commands.
 
 # Command Description
 
-1. node liri.js my-tweets
+# 1. node liri.js my-tweets
 This will show your last 20 tweets and when they were created at in your terminal/bash window.
 
-2. node liri.js spotify-this-song '<song name here>'
+# 2. node liri.js spotify-this-song '<song name here>'
 This will show the following information about the song in your terminal/bash window:
 
 - Artist(s)
@@ -31,7 +31,7 @@ This will show the following information about the song in your terminal/bash wi
 
 If no song is provided then your program will default to 'Breakthrough' by Modest Mouse and other artists.
 
-3. node liri.js movie-this <movie name>
+# 3. node liri.js movie-this <movie name>
 This will output the following information in terminal/bash.
 
 - Title of the movie.
@@ -46,7 +46,7 @@ This will output the following information in terminal/bash.
 
 Or if no movie is passed through, it will default to "Mr. Nobody"
 
-4. node liri.js do-what-it-says
+# 4. node liri.js do-what-it-says
 
 It will run spotify-this-song for "I Want it That Way," as follows the text in random.txt.
 
