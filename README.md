@@ -9,14 +9,14 @@ spotify-this-song
 movie-this
 do-what-it-says
 
-#Getting Started
+# Getting Started
 
 Clone this repository.
 Navigate to directory where the repo was cloned.
 Run the command 'npm install' in Terminal(mac) or GitBash(windows). This installs neccessary npm packages for application to run.
 Run the command 'node liri.js' + one of the four commands.
 
-#Command Description
+# Command Description
 
 1. node liri.js my-tweets
 This will show your last 20 tweets and when they were created at in your terminal/bash window.
@@ -52,12 +52,12 @@ It will run spotify-this-song for "I Want it That Way," as follows the text in r
 
 #Technology Used
 
-Node.js
-Twitter NPM Package - https://www.npmjs.com/package/twitter
-Spotify NPM Package - https://www.npmjs.com/package/node-spotify-api
-Request NPM Package - https://www.npmjs.com/package/request
-Request is used to grab data from OMDB API.
-DotEnv NPM Package - https://www.npmjs.com/package/dotenv
+1. Node.js
+2. Twitter NPM Package - https://www.npmjs.com/package/twitter
+3. Spotify NPM Package - https://www.npmjs.com/package/node-spotify-api
+4. Request NPM Package - https://www.npmjs.com/package/request
+5. Request is used to grab data from OMDB API.
+6. DotEnv NPM Package - https://www.npmjs.com/package/dotenv
 
 #Author 
 Connor Reed
