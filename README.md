@@ -4,10 +4,10 @@ Week 10 Liri Bot
 
 This application uses Node JS to create LIRI, a similar bot to iPhones's SIRI. LIRI is a Language Interpretation and Recognition Interface.  LIRI uses the command line to take in pararmeters and return data tied to one of four commands:
 
-my-tweets
-spotify-this-song
-movie-this
-do-what-it-says
+- my-tweets
+- spotify-this-song
+- movie-this
+- do-what-it-says
 
 # Getting Started
 
